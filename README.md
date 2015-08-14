@@ -1,14 +1,11 @@
-# oppia-xblock
-
 ## Embedding Oppia explorations in the OpenEdX platform
 
 This XBlock is packaged in the standard way as other third-party XBlock
-contributions to the OpenEdX platform. The following notes are only
-suggestions, but please note that the way XBlocks are installed may change over
-time. If in doubt, consult the latest OpenEdX documentation.
+contributions to the OpenEdX platform. Consult the latest OpenEdX documentation
+for installation instructions.
 
-Download the contents of this repository to a folder on your local machine, and deploy it following the
-instructions in [this tutorial](http://opencraft.com/doc/edx/xblock/tutorial.html#deploying-to-edx-platform).
+To get started, download the contents of this repository to a folder on your
+local machine, and deploy it following the instructions in [this tutorial](http://opencraft.com/doc/edx/xblock/tutorial.html#deploying-to-edx-platform).
 
 Note that you will need to add the value "oppia" to the `advanced_modules`
 field in Studio's 'Advanced Settings' menu.
