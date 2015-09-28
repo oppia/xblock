@@ -18,6 +18,8 @@
 
 import pkg_resources
 
+from eventtracking import tracker
+
 from xblock.core import XBlock
 from xblock.fields import Scope, Integer, String
 from xblock.fragment import Fragment
@@ -27,25 +29,27 @@ class OppiaXBlock(XBlock):
     """
     An XBlock providing an embedded Oppia exploration.
     """
+    _EVENT_NAME_EXPLORATION_LOADED = 'oppia.exploration.loaded'
+    _EVENT_NAME_EXPLORATION_COMPLETED = 'oppia.exploration.completed'
+    _EVENT_NAME_STATE_TRANSITION = 'oppia.exploration.state.changed'
+
+    # The display name of the component. Note that this is not editable in
+    # Studio.
+    display_name = String(
+        help="Display name of the component",
+        default="Oppia Exploration",
+        scope=Scope.settings)
 
     # Note: These fields are defined on the class, and can be accessed in the
     # code as self.<fieldname>.
 
     oppiaid = String(
         help="ID of the Oppia exploration to embed",
-        default=None,
+        default="4",
         scope=Scope.content)
     src = String(
         help="Source URL of the site",
         default="https://www.oppia.org",
-        scope=Scope.content)
-    width = Integer(
-        help="Width of the embedded exploration",
-        default=700,
-        scope=Scope.content)
-    height = Integer(
-        help="Height of the embedded exploration",
-        default=500,
         scope=Scope.content)
 
     def resource_string(self, path):
@@ -60,35 +64,50 @@ class OppiaXBlock(XBlock):
         """
         html = self.resource_string("static/html/oppia.html")
         frag = Fragment(html.format(self=self))
-        frag.add_javascript_url(
-            "//cdn.jsdelivr.net/oppia/0.0.1/oppia-player.min.js")
+        frag.add_javascript(
+            self.resource_string('static/lib/oppia-player-0.0.1-modified.js'))
         frag.add_javascript(self.resource_string("static/js/oppia.js"))
         frag.initialize_js('OppiaXBlock')
         return frag
 
-    def _log(self, message):
+    def author_view(self, context=None):
+        """
+        A view of the XBlock to show within the Studio preview. For some
+        reason, the student_view() does not display, so we show a placeholder
+        instead.
+        """
+        html = self.resource_string("static/html/oppia_preview.html")
+        frag = Fragment(html.format(self=self))
+        return frag
+
+    def _log(self, event_name, payload):
         """
         Logger for load, state transition and completion events.
         """
-        pass
+        tracker.emit(event_name, payload)
 
     @XBlock.json_handler
     def on_exploration_loaded(self, data, suffix=''):
         """Called when an exploration has loaded."""
-        self._log('Exploration %s was loaded.' % self.oppiaid)
+        self._log(self._EVENT_NAME_EXPLORATION_LOADED, {
+            'exploration_id': self.oppiaid,
+        })
 
     @XBlock.json_handler
     def on_state_transition(self, data, suffix=''):
         """Called when a state transition in the exploration has occurred."""
-        self._log(
-            "Recording the following state transition for exploration %s: "
-            "'%s' to '%s'" % (
-                self.oppiaid, data['oldStateName'], data['newStateName']))
+        self._log(self._EVENT_NAME_STATE_TRANSITION, {
+            'exploration_id': self.oppiaid,
+            'old_state_name': data['oldStateName'],
+            'new_state_name': data['newStateName'],
+        })
 
     @XBlock.json_handler
     def on_exploration_completed(self, data, suffix=''):
         """Called when the exploration has been completed."""
-        self._log('Exploration %s has been completed.' % self.oppiaid)
+        self._log(self._EVENT_NAME_EXPLORATION_COMPLETED, {
+            'exploration_id': self.oppiaid
+        })
 
     def studio_view(self, context):
         """
@@ -98,8 +117,7 @@ class OppiaXBlock(XBlock):
             __name__, "static/html/oppia_edit.html")
         oppiaid = self.oppiaid or ''
         frag = Fragment(unicode(html_str).format(
-            oppiaid=oppiaid, src=self.src, width=self.width,
-            height=self.height))
+            oppiaid=oppiaid, src=self.src))
 
         js_str = pkg_resources.resource_string(
             __name__, "static/js/oppia_edit.js")
@@ -115,8 +133,6 @@ class OppiaXBlock(XBlock):
         """
         self.oppiaid = data.get('oppiaid')
         self.src = data.get('src')
-        self.width = data.get('width')
-        self.height = data.get('height')
 
         return {'result': 'success'}
 
@@ -126,7 +142,7 @@ class OppiaXBlock(XBlock):
         return [
             ("Oppia Embedding",
              """<vertical_demo>
-                <oppia oppiaid="0" src="https://www.oppia.org" width="700" />
+                <oppia oppiaid="0" src="https://www.oppia.org"/>
                 </vertical_demo>
              """),
         ]

@@ -21,9 +21,7 @@ function OppiaXBlockEditor(runtime, element) {
     var handlerUrl = runtime.handlerUrl(element, 'studio_submit');
     var data = {
       oppiaid: $(element).find('input[name=oppiaid]').val(),
-      src: $(element).find('input[name=src]').val(),
-      width: $(element).find('input[name=width]').val(),
-      height: $(element).find('input[name=height]').val()
+      src: $(element).find('input[name=src]').val()
     };
     runtime.notify('save', {state: 'start'});
     $.post(handlerUrl, JSON.stringify(data)).done(function(response) {
