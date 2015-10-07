@@ -33,16 +33,10 @@ class OppiaXBlock(XBlock):
     _EVENT_NAME_EXPLORATION_COMPLETED = 'oppia.exploration.completed'
     _EVENT_NAME_STATE_TRANSITION = 'oppia.exploration.state.changed'
 
-    # The display name of the component. Note that this is not editable in
-    # Studio.
     display_name = String(
         help="Display name of the component",
         default="Oppia Exploration",
-        scope=Scope.settings)
-
-    # Note: These fields are defined on the class, and can be accessed in the
-    # code as self.<fieldname>.
-
+        scope=Scope.content)
     oppiaid = String(
         help="ID of the Oppia exploration to embed",
         default="4",
@@ -117,7 +111,7 @@ class OppiaXBlock(XBlock):
             __name__, "static/html/oppia_edit.html")
         oppiaid = self.oppiaid or ''
         frag = Fragment(unicode(html_str).format(
-            oppiaid=oppiaid, src=self.src))
+            oppiaid=oppiaid, src=self.src, display_name=self.display_name))
 
         js_str = pkg_resources.resource_string(
             __name__, "static/js/oppia_edit.js")
@@ -133,6 +127,7 @@ class OppiaXBlock(XBlock):
         """
         self.oppiaid = data.get('oppiaid')
         self.src = data.get('src')
+        self.display_name = data.get('display_name')
 
         return {'result': 'success'}
 
