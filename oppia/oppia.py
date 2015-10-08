@@ -18,8 +18,6 @@
 
 import pkg_resources
 
-from eventtracking import tracker
-
 from xblock.core import XBlock
 from xblock.fields import Scope, Integer, String
 from xblock.fragment import Fragment
@@ -78,7 +76,7 @@ class OppiaXBlock(XBlock):
         """
         Logger for load, state transition and completion events.
         """
-        tracker.emit(event_name, payload)
+        self.runtime.publish(self, event_name, payload)
 
     @XBlock.json_handler
     def on_exploration_loaded(self, data, suffix=''):
