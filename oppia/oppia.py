@@ -19,7 +19,7 @@
 import pkg_resources
 
 from xblock.core import XBlock
-from xblock.fields import Scope, Integer, String
+from xblock.fields import Scope, String
 from xblock.fragment import Fragment
 
 
@@ -83,6 +83,7 @@ class OppiaXBlock(XBlock):
         """Called when an exploration has loaded."""
         self._log(self._EVENT_NAME_EXPLORATION_LOADED, {
             'exploration_id': self.oppiaid,
+            'exploration_version': data['explorationVersion'],
         })
 
     @XBlock.json_handler
@@ -92,13 +93,15 @@ class OppiaXBlock(XBlock):
             'exploration_id': self.oppiaid,
             'old_state_name': data['oldStateName'],
             'new_state_name': data['newStateName'],
+            'exploration_version': data['explorationVersion'],
         })
 
     @XBlock.json_handler
     def on_exploration_completed(self, data, suffix=''):
         """Called when the exploration has been completed."""
         self._log(self._EVENT_NAME_EXPLORATION_COMPLETED, {
-            'exploration_id': self.oppiaid
+            'exploration_id': self.oppiaid,
+            'exploration_version': data['explorationVersion'],
         })
 
     def studio_view(self, context):

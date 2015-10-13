@@ -245,6 +245,8 @@
         }
       }, LOADING_TIMEOUT_SECS);
 
+      // NOTE: Modified for OpenEdX to include exploration version.
+
       /**
        * Receives JSON-encoded messages from embedded Oppia iframes. Each
        * message has a title and a payload. The structure of the payload
@@ -252,14 +254,16 @@
        *   - 'heightChange': The payload is an Object with the following fields:
        *         height: a positive integer, and
        *         scroll: boolean -- scroll down to bottom if true.
-       *   - 'explorationLoaded': The payload is an empty Object.
-       *   - 'stateTransition': The payload is an Object with three keys:
-       *       'oldStateName', 'jsonAnswer' and 'newStateName'. All three of
-       *       these have values of type String.
+       *   - 'explorationLoaded': The payload is an Object with one key:
+       *         explorationVersion.
+       *   - 'stateTransition': The payload is an Object with four keys:
+       *       'oldStateName', 'jsonAnswer', 'newStateName' and
+       *       'explorationVersion'.
        *   - 'explorationReset': The payload is an Object with a single
        *          key-value pair. The key is 'stateName', and the value is of
        *          type String.
-       *   - 'explorationCompleted': The payload is an empty Object.
+       *   - 'explorationCompleted': The payload is an Object with one key:
+       *          explorationVersion.
        */
       window.addEventListener('message', function(evt) {
         // Verify the origin of the message.
@@ -284,7 +288,8 @@
           case 'explorationLoaded':
             that.loadingDiv.parentNode.removeChild(that.loadingDiv);
             that.explorationHasLoaded = true;
-            window.OPPIA_PLAYER.onExplorationLoaded(iframeNode);
+            window.OPPIA_PLAYER.onExplorationLoaded(
+              iframeNode, data.payload.explorationVersion);
             break;
           case 'heightChange':
             window.OPPIA_PLAYER.onHeightChange(
@@ -293,7 +298,7 @@
           case 'stateTransition':
             window.OPPIA_PLAYER.onStateTransition(
               iframeNode, data.payload.oldStateName, data.payload.jsonAnswer,
-              data.payload.newStateName);
+              data.payload.newStateName, data.payload.explorationVersion);
             break;
           case 'explorationReset':
             // This needs to be set in order to allow the scrollHeight of the
@@ -304,7 +309,8 @@
               iframeNode, data.payload.stateName);
             break;
           case 'explorationCompleted':
-            window.OPPIA_PLAYER.onExplorationCompleted(iframeNode);
+            window.OPPIA_PLAYER.onExplorationCompleted(
+              iframeNode, data.payload.explorationVersion);
             break;
           default:
             _log('Error: event ' + data.title + ' not recognized.');
@@ -361,24 +367,27 @@
 
       window.OPPIA_PLAYER.onHeightChangePostHook(iframeNode, newHeight);
     },
-    onExplorationLoaded: function(iframeNode) {
+    onExplorationLoaded: function(iframeNode, explorationVersion) {
       setTimeout(function() {
         // Show the oppia contents after making sure the rendering happened.
         iframeNode.style.position = 'inherit';
         iframeNode.style.visibility = 'inherit';
         iframeNode.style.top = 'inherit';
       }, 0);
-      window.OPPIA_PLAYER.onExplorationLoadedPostHook(iframeNode);
+      window.OPPIA_PLAYER.onExplorationLoadedPostHook(
+        iframeNode, explorationVersion);
     },
-    onStateTransition: function(iframeNode, oldStateName, jsonAnswer, newStateName) {
+    onStateTransition: function(
+        iframeNode, oldStateName, jsonAnswer, newStateName, explorationVersion) {
       window.OPPIA_PLAYER.onStateTransitionPostHook(
-        iframeNode, oldStateName, jsonAnswer, newStateName);
+        iframeNode, oldStateName, jsonAnswer, newStateName, explorationVersion);
     },
     onExplorationReset: function(iframeNode, stateName) {
       window.OPPIA_PLAYER.onExplorationResetPostHook(iframeNode, stateName);
     },
-    onExplorationCompleted: function(iframeNode) {
-      window.OPPIA_PLAYER.onExplorationCompletedPostHook(iframeNode);
+    onExplorationCompleted: function(iframeNode, explorationVersion) {
+      window.OPPIA_PLAYER.onExplorationCompletedPostHook(
+        iframeNode, explorationVersion);
     }
   };
 }(window, document));
@@ -401,8 +410,10 @@ window.OPPIA_PLAYER.onHeightChangePostHook = function(iframeNode, newHeight) {
  * Called when the exploration is loaded.
  * @param {object} iframeNode The iframe node that is the source of the
  *     postMessage call.
+ * @param {int} explorationVersion The version number of the exploration.
  */
-window.OPPIA_PLAYER.onExplorationLoadedPostHook = function(iframeNode) {
+window.OPPIA_PLAYER.onExplorationLoadedPostHook = function(
+  iframeNode, explorationVersion) {
 
 };
 
@@ -413,9 +424,10 @@ window.OPPIA_PLAYER.onExplorationLoadedPostHook = function(iframeNode) {
  * @param {string} oldStateName The name of the previous state.
  * @param {string} jsonAnswer A JSON representation of the reader's answer.
  * @param {string} newStateName The name of the destination state.
+ * @param {int} explorationVersion The version number of the exploration.
  */
 window.OPPIA_PLAYER.onStateTransitionPostHook = function(
-    iframeNode, oldStateName, jsonAnswer, newStateName) {
+    iframeNode, oldStateName, jsonAnswer, newStateName, explorationVersion) {
 
 };
 
@@ -433,7 +445,9 @@ window.OPPIA_PLAYER.onExplorationResetPostHook = function(iframeNode, stateName)
  * Called when the exploration is completed.
  * @param {object} iframeNode The iframe node that is the source of the
  *     postMessage call.
+ * @param {int} explorationVersion The version number of the exploration.
  */
-window.OPPIA_PLAYER.onExplorationCompletedPostHook = function(iframeNode) {
+window.OPPIA_PLAYER.onExplorationCompletedPostHook = function(
+  iframeNode, explorationVersion) {
 
 };

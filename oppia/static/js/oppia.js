@@ -25,32 +25,39 @@ function OppiaXBlock(runtime, element) {
     element, 'on_exploration_completed');
 
   $(function ($) {
-    window.OPPIA_PLAYER.onExplorationLoadedPostHook = function(iframeNode) {
+    window.OPPIA_PLAYER.onExplorationLoadedPostHook = function(
+        iframeNode, explorationVersion) {
       $.ajax({
         type: "POST",
         url: onLoadHandlerUrl,
-        data: JSON.stringify({})
+        data: JSON.stringify({
+          explorationVersion: explorationVersion
+        })
       });
     };
 
     window.OPPIA_PLAYER.onStateTransitionPostHook = function(
-        iframeNode, oldStateName, jsonAnswer, newStateName) {
+        iframeNode, oldStateName, jsonAnswer, newStateName, explorationVersion) {
       $.ajax({
         type: "POST",
         url: onStateTransitionUrl,
         data: JSON.stringify({
           oldStateName: oldStateName,
           jsonAnswer: jsonAnswer,
-          newStateName: newStateName
+          newStateName: newStateName,
+          explorationVersion: explorationVersion
         })
       });
     };
 
-    window.OPPIA_PLAYER.onExplorationCompletedPostHook = function(iframeNode) {
+    window.OPPIA_PLAYER.onExplorationCompletedPostHook = function(
+        iframeNode, explorationVersion) {
       $.ajax({
         type: "POST",
         url: onCompleteHandlerUrl,
-        data: JSON.stringify({})
+        data: JSON.stringify({
+          explorationVersion: explorationVersion
+        })
       });
     };
   });
