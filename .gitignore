@@ -1,2 +1,10 @@
 *.pyc
 oppia_xblock.egg-info/*
+
+# Translation files
+*.po
+*.mo
+!oppia/translations/*/LC_MESSAGES/django.po
+!oppia/translations/*/LC_MESSAGES/djangojs.po
+oppia/translations/en/LC_MESSAGES/django.po
+oppia/translations/en/LC_MESSAGES/djangojs.po

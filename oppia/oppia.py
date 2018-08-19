@@ -18,6 +18,7 @@
 
 import pkg_resources
 
+from django.utils.translation import ugettext_lazy as _
 from xblock.core import XBlock
 from xblock.fields import Scope, String
 from xblock.fragment import Fragment
@@ -32,15 +33,15 @@ class OppiaXBlock(XBlock):
     _EVENT_NAME_STATE_TRANSITION = 'oppia.exploration.state.changed'
 
     display_name = String(
-        help="Display name of the component",
+        help=_("Display name of the component"),
         default="Oppia Exploration",
         scope=Scope.content)
     oppiaid = String(
-        help="ID of the Oppia exploration to embed",
+        help=_("ID of the Oppia exploration to embed"),
         default="4",
         scope=Scope.content)
     src = String(
-        help="Source URL of the site",
+        help=_("Source URL of the site"),
         default="https://www.oppia.org",
         scope=Scope.content)
 

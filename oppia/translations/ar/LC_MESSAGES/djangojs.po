@@ -1,0 +1,29 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: Oppia DjangoJS\n"
+"Language: ar\n"
+
+#: oppia/static/lib/oppia-player-0.0.1-modified.js
+msgid "This Oppia exploration could not be loaded because no oppia-id attribute was specified in the HTML tag."
+msgstr ""
+
+#: oppia/static/lib/oppia-player-0.0.1-modified.js
+msgid "Load Exploration"
+msgstr ""
+
+#: oppia/static/lib/oppia-player-0.0.1-modified.js
+msgid "Oppia Exploration"
+msgstr ""
+
+#: oppia/static/lib/oppia-player-0.0.1-modified.js
+msgid "This exploration could not be loaded."
+msgstr ""
+
+#: oppia/static/lib/oppia-player-0.0.1-modified.js
+msgid "Sorry about that."
+msgstr ""
+

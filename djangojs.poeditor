@@ -1,0 +1,7 @@
+[project.oppiajs]
+project_id = 204055
+type = po
+terms = oppia/translations/en/LC_MESSAGES/djangojs.po
+trans.ar = oppia/translations/ar/LC_MESSAGES/djangojs.po
+trans.ja = oppia/translations/ja_JP/LC_MESSAGES/djangojs.po
+trans.es = oppia/translations/es_ES/LC_MESSAGES/djangojs.po
