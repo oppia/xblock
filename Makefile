@@ -41,13 +41,13 @@ compile_translations: ## compile translation files, outputting .mo files for eac
 detect_changed_source_translations:
 	cd oppia && i18n_tool changed
 
-pull_translations: ## pull translations from Transifex
+pull_translations: ## pull translations from POEditor.com
 	poeditor pull --config-file django.poeditor
 	poeditor pull --config-file djangojs.poeditor
 	make compile_translations
 	make clean
 
-push_translations: extract_translations ## push source translation files (.po) from Transifex
+push_translations: extract_translations ## push source translation files (.po) from POEditor.com
 	poeditor pushTerms --config-file django.poeditor
 	sleep 11  # Avoid rate limit
 	poeditor pushTerms --config-file djangojs.poeditor

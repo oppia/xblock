@@ -55,8 +55,10 @@ class OppiaXBlock(XBlock):
         The primary view of the OppiaXBlock, shown to students
         when viewing courses.
         """
-        html = self.resource_string("static/html/oppia.html")
-        frag = Fragment(html.format(self=self))
+        frag = Fragment(self.system.render_template("oppia/oppia.html", {
+            'src': self.src,
+            'oppiaid': self.oppiaid,
+        }))
         frag.add_javascript(
             self.resource_string('static/lib/oppia-player-0.0.1-modified.js'))
         frag.add_javascript(self.resource_string("static/js/oppia.js"))
@@ -69,8 +71,10 @@ class OppiaXBlock(XBlock):
         reason, the student_view() does not display, so we show a placeholder
         instead.
         """
-        html = self.resource_string("static/html/oppia_preview.html")
-        frag = Fragment(html.format(self=self))
+        frag = Fragment(self.system.render_template("oppia/oppia_preview.html", {
+            'src': self.src,
+            'oppiaid': self.oppiaid,
+        }))
         return frag
 
     def _log(self, event_name, payload):
@@ -109,11 +113,11 @@ class OppiaXBlock(XBlock):
         """
         Create a fragment used to display the edit view in the Studio.
         """
-        html_str = pkg_resources.resource_string(
-            __name__, "static/html/oppia_edit.html")
-        oppiaid = self.oppiaid or ''
-        frag = Fragment(unicode(html_str).format(
-            oppiaid=oppiaid, src=self.src, display_name=self.display_name))
+        frag = Fragment(self.system.render_template("oppia/oppia_edit.html", {
+            'src': self.src,
+            'oppiaid': self.oppiaid or '',
+            'display_name': self.display_name,
+        }))
 
         js_str = pkg_resources.resource_string(
             __name__, "static/js/oppia_edit.js")

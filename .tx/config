@@ -1,8 +1,0 @@
-[main]
-host = https://www.transifex.com
-
-[xblocks.oppia]
-file_filter = poll/translations/<lang>/LC_MESSAGES/text.po
-source_file = poll/translations/en/LC_MESSAGES/text.po
-source_lang = en
-type = PO
