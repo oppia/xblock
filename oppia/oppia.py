@@ -16,14 +16,17 @@
 
 """This XBlock embeds an instance of Oppia in the OpenEdX platform."""
 
+import os
 import pkg_resources
 
+from django.template import Template, Context
 from django.utils.translation import ugettext_lazy as _
 from xblock.core import XBlock
 from xblock.fields import Scope, String
 from xblock.fragment import Fragment
 
 
+@XBlock.needs("i18n")
 class OppiaXBlock(XBlock):
     """
     An XBlock providing an embedded Oppia exploration.
@@ -50,12 +53,17 @@ class OppiaXBlock(XBlock):
         data = pkg_resources.resource_string(__name__, path)
         return data.decode("utf8")
 
+    def render_template(self, path, context):
+        template_string = pkg_resources.resource_string(__name__, os.path.join('templates', path))
+        html = Template(template_string).render(Context(context))
+        return html
+
     def student_view(self, context=None):
         """
         The primary view of the OppiaXBlock, shown to students
         when viewing courses.
         """
-        frag = Fragment(self.system.render_template("oppia/oppia.html", {
+        frag = Fragment(self.render_template("oppia.html", {
             'src': self.src,
             'oppiaid': self.oppiaid,
         }))
@@ -71,7 +79,7 @@ class OppiaXBlock(XBlock):
         reason, the student_view() does not display, so we show a placeholder
         instead.
         """
-        frag = Fragment(self.system.render_template("oppia/oppia_preview.html", {
+        frag = Fragment(self.render_template("oppia_preview.html", {
             'src': self.src,
             'oppiaid': self.oppiaid,
         }))
@@ -113,7 +121,7 @@ class OppiaXBlock(XBlock):
         """
         Create a fragment used to display the edit view in the Studio.
         """
-        frag = Fragment(self.system.render_template("oppia/oppia_edit.html", {
+        frag = Fragment(self.render_template("oppia_edit.html", {
             'src': self.src,
             'oppiaid': self.oppiaid or '',
             'display_name': self.display_name,

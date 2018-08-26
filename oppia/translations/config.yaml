@@ -76,6 +76,5 @@ dummy_locales:
 generate_merge:
     django.po:
         - django-partial.po
-        - mako.po
     djangojs.po:
         - djangojs-partial.po

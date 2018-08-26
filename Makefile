@@ -33,7 +33,8 @@ selfcheck: ## check that the Makefile is well-formed
 ## Localization targets
 
 extract_translations: ## extract strings to be translated, outputting .po files
-	i18n_tool extract
+	django-admin.py makemessages -l en -d django
+	django-admin.py makemessages -l en -d djangojs -e js
 
 compile_translations: ## compile translation files, outputting .mo files for each supported language
 	django-admin compilemessages

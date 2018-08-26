@@ -5,5 +5,3 @@ oppia_xblock.egg-info/*
 *.{po,mo,pot}
 !oppia/translations/*/LC_MESSAGES/django.{po,mo}
 !oppia/translations/*/LC_MESSAGES/djangojs.{po,mo}
-oppia/translations/en/LC_MESSAGES/django.{po,mo}
-oppia/translations/en/LC_MESSAGES/djangojs.{po,mo}

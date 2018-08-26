@@ -1,4 +1,5 @@
 [project.oppiajs]
+; Project page: https://poeditor.com/projects/view?id=204055
 project_id = 204055
 type = po
 terms = oppia/translations/en/LC_MESSAGES/djangojs.po

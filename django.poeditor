@@ -1,4 +1,5 @@
 [project.oppia]
+; Project page: https://poeditor.com/projects/view?id=204051
 project_id = 204051
 type = po
 terms = oppia/translations/en/LC_MESSAGES/django.po
