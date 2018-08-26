@@ -48,11 +48,8 @@ pull_translations: ## pull translations from POEditor.com
 	make compile_translations
 	make clean
 
-push_translations: extract_translations ## push source translation files (.po) from POEditor.com
-	poeditor pushTerms --config-file django.poeditor
-	sleep 11  # Avoid rate limit
-	poeditor pushTerms --config-file djangojs.poeditor
-	make clean
+push_translations: clean extract_translations ## push source translation files (.po) from POEditor.com
+	poeditor --sync-terms pushTerms
 
 dummy_translations: ## generate dummy translation (.po) files
 	cd oppia && i18n_tool dummy
