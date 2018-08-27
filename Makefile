@@ -40,11 +40,10 @@ compile_translations: ## compile translation files, outputting .mo files for eac
 	django-admin compilemessages
 
 detect_changed_source_translations:
-	cd oppia && i18n_tool changed
+	i18n_tool changed
 
-pull_translations: ## pull translations from POEditor.com
-	poeditor pull --config-file django.poeditor
-	poeditor pull --config-file djangojs.poeditor
+pull_translations: dummy_translations ## pull translations from POEditor.com
+	poeditor pull
 	make compile_translations
 	make clean
 
@@ -52,7 +51,7 @@ push_translations: clean extract_translations ## push source translation files (
 	poeditor --sync-terms pushTerms
 
 dummy_translations: ## generate dummy translation (.po) files
-	cd oppia && i18n_tool dummy
+	i18n_tool dummy
 
 build_dummy_translations: extract_translations dummy_translations compile_translations ## generate and compile dummy translation files
 
