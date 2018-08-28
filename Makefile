@@ -33,7 +33,9 @@ selfcheck: ## check that the Makefile is well-formed
 ## Localization targets
 
 extract_translations: ## extract strings to be translated, outputting .po files
+	rm -f locale/en/LC_MESSAGES/django.po
 	django-admin.py makemessages -l en -d django
+	mv locale/en/LC_MESSAGES/django.po locale/en/LC_MESSAGES/text.po
 	django-admin.py makemessages -l en -d djangojs -e js
 
 compile_translations: ## compile translation files, outputting .mo files for each supported language

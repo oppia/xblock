@@ -2,10 +2,10 @@
 ; Project page: https://poeditor.com/projects/view?id=204051
 project_id = 204051
 type = po
-terms = oppia/translations/en/LC_MESSAGES/django.po
-trans.ar = oppia/translations/en/LC_MESSAGES/django.po
-trans.ja = oppia/translations/ja_JP/LC_MESSAGES/django.po
-trans.es = oppia/translations/es_ES/LC_MESSAGES/django.po
+terms = oppia/translations/en/LC_MESSAGES/text.po
+trans.ar = oppia/translations/en/LC_MESSAGES/text.po
+trans.ja = oppia/translations/ja_JP/LC_MESSAGES/text.po
+trans.es = oppia/translations/es_ES/LC_MESSAGES/text.po
 
 [project.oppiajs]
 ; Project page: https://poeditor.com/projects/view?id=204055

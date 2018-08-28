@@ -19,11 +19,14 @@
 import os
 import pkg_resources
 
-from django.template import Template, Context
-from django.utils.translation import ugettext_lazy as _
+from django.template import Context
 from xblock.core import XBlock
 from xblock.fields import Scope, String
 from xblock.fragment import Fragment
+from xblockutils.resources import ResourceLoader
+
+
+from .utils import _
 
 
 @XBlock.needs("i18n")
@@ -31,13 +34,15 @@ class OppiaXBlock(XBlock):
     """
     An XBlock providing an embedded Oppia exploration.
     """
+    loader = ResourceLoader(__name__)
+
     _EVENT_NAME_EXPLORATION_LOADED = 'oppia.exploration.loaded'
     _EVENT_NAME_EXPLORATION_COMPLETED = 'oppia.exploration.completed'
     _EVENT_NAME_STATE_TRANSITION = 'oppia.exploration.state.changed'
 
     display_name = String(
         help=_("Display name of the component"),
-        default="Oppia Exploration",
+        default=_("Oppia Exploration"),
         scope=Scope.content)
     oppiaid = String(
         help=_("ID of the Oppia exploration to embed"),
@@ -54,9 +59,11 @@ class OppiaXBlock(XBlock):
         return data.decode("utf8")
 
     def render_template(self, path, context):
-        template_string = pkg_resources.resource_string(__name__, os.path.join('templates', path))
-        html = Template(template_string).render(Context(context))
-        return html
+        return self.loader.render_django_template(
+            os.path.join('templates', path),
+            context=Context(context),
+            i18n_service=self.runtime.service(self, "i18n"),
+        )
 
     def student_view(self, context=None):
         """
