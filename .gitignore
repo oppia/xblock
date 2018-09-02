@@ -2,6 +2,4 @@
 oppia_xblock.egg-info/*
 
 # Translation files
-*.{po,mo,pot}
-!oppia/translations/*/LC_MESSAGES/django.{po,mo}
-!oppia/translations/*/LC_MESSAGES/djangojs.{po,mo}
+*.pot

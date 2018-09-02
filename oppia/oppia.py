@@ -20,6 +20,8 @@ import os
 import pkg_resources
 
 from django.template import Context
+from django import utils
+
 from xblock.core import XBlock
 from xblock.fields import Scope, String
 from xblock.fragment import Fragment
@@ -65,6 +67,14 @@ class OppiaXBlock(XBlock):
             i18n_service=self.runtime.service(self, "i18n"),
         )
 
+    def get_translation_content(self):
+        try:
+            return self.resource_string('static/js/translations/{lang}/textjs.js'.format(
+                lang=utils.translation.get_language(),
+            ))
+        except IOError:
+            return self.resource_string('public/js/translations/en/textjs.js')
+
     def student_view(self, context=None):
         """
         The primary view of the OppiaXBlock, shown to students
@@ -74,6 +84,7 @@ class OppiaXBlock(XBlock):
             'src': self.src,
             'oppiaid': self.oppiaid,
         }))
+        frag.add_javascript(self.get_translation_content())
         frag.add_javascript(
             self.resource_string('static/lib/oppia-player-0.0.1-modified.js'))
         frag.add_javascript(self.resource_string("static/js/oppia.js"))
@@ -90,6 +101,7 @@ class OppiaXBlock(XBlock):
             'src': self.src,
             'oppiaid': self.oppiaid,
         }))
+        frag.add_javascript(self.get_translation_content())
         return frag
 
     def _log(self, event_name, payload):
@@ -134,6 +146,7 @@ class OppiaXBlock(XBlock):
             'display_name': self.display_name,
         }))
 
+        frag.add_javascript(self.get_translation_content())
         js_str = pkg_resources.resource_string(
             __name__, "static/js/oppia_edit.js")
         frag.add_javascript(unicode(js_str))
