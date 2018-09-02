@@ -20,7 +20,7 @@
  */
 
 
-(function(window, document) {
+(function(window, document, gettext) {
   // Prevent duplicate loads of this embedding script.
   if (window.hasOwnProperty('OPPIA_EMBED_GLOBALS')) {
     return;
@@ -110,7 +110,7 @@
 
       if (!this.oppiaNode.getAttribute('oppia-id')) {
         var strongTag = document.createElement('strong');
-        strongTag.textContent = 'Warning: ';
+        strongTag.textContent = gettext('Warning: ');
 
         var spanTag = document.createElement('span');
         spanTag.textContent = gettext('This Oppia exploration could not be loaded because no oppia-id attribute was specified in the HTML tag.');
@@ -211,7 +211,7 @@
       // Create a div with a loading message.
       var loadingMessageSpan = document.createElement('span');
       loadingMessageSpan.style.fontSize = 'larger';
-      loadingMessageSpan.textContent = 'Loading...';
+      loadingMessageSpan.textContent = gettext('Loading...');
 
       var loadingMessageContainer = document.createElement('div');
       loadingMessageContainer.setAttribute('style', warningBoxStyle);
@@ -388,7 +388,7 @@
         iframeNode, explorationVersion);
     }
   };
-}(window, document));
+}(window, document, OppiaXBlockI18N.gettext));
 
 
 // FIXME: The contents of all functions below this line can be overwritten.
