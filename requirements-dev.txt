@@ -2,6 +2,6 @@
 -e git://github.com/edx/xblock-utils.git#egg=xblock-utils
 Django==1.11
 Babel==1.3
-# TODO: Revert back to `poeditor-client`, once this PR is merged: https://github.com/lukin0110/poeditor-client/pull/7
-git+https://github.com/appsembler/poeditor-client@omar/i18n#egg=poeditor-client
+# TODO: Revert back to `poeditor-client==0.0.5`, once it's published on PyPI
+git+https://github.com/lukin0110/poeditor-client@v0.0.5#egg=poeditor-client==0.0.5
 edx-i18n-tools==0.4.5

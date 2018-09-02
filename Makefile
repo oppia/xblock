@@ -1,4 +1,4 @@
-.PHONY: dummy_translations extract_translations fake_translations help pull_translations push_translations \
+.PHONY: dummy_translations extract_translations fake_translations help pull_translations push_translations
 
 
 .DEFAULT_GOAL := help
@@ -41,7 +41,7 @@ extract_translations: ## extract strings to be translated, outputting .po files
 compile_translations: ## compile translation files, outputting .mo files for each supported language
 	django-admin compilemessages
 
-detect_changed_source_translations:
+detect_changed_source_translations: ## determines if the source translation files are up-to-date, otherwise exit with a non-zero code.
 	i18n_tool changed
 
 pull_translations: dummy_translations ## pull translations from POEditor.com
@@ -49,7 +49,7 @@ pull_translations: dummy_translations ## pull translations from POEditor.com
 	make compile_translations
 	make clean
 
-push_translations: clean extract_translations ## push source translation files (.po) from POEditor.com
+push_translations: clean extract_translations ## push source translation files (.po) to POEditor.com
 	poeditor --sync-terms pushTerms
 
 dummy_translations: ## generate dummy translation (.po) files
