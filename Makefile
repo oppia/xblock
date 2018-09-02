@@ -42,7 +42,7 @@ selfcheck: ## check that the Makefile is well-formed
 
 extract_translations: clean ## extract strings to be translated, outputting .po files
 	python manage.py makemessages -l en -d django
-	python manage.py makemessages -l en -d djangojs -e js
+	python manage.py makemessages -l en -d djangojs -e js --ignore oppia/static/js/translations
 	mv locale/en/LC_MESSAGES/django.po locale/en/LC_MESSAGES/text.po
 	mv locale/en/LC_MESSAGES/djangojs.po locale/en/LC_MESSAGES/textjs.po
 
