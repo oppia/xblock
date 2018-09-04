@@ -1,0 +1,89 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-09-02 20:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: eo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: oppia/oppia.py
+msgid "Display name of the component"
+msgstr "Dïspläý nämé öf thé çömpönént Ⱡ'σяєм ιρѕυм ∂σłσя ѕιт αмєт, ¢σηѕє¢#"
+
+#: oppia/oppia.py
+msgid "Oppia Exploration"
+msgstr "Öppïä Éxplörätïön Ⱡ'σяєм ιρѕυм ∂σłσя ѕιт αмє#"
+
+#: oppia/oppia.py
+msgid "ID of the Oppia exploration to embed"
+msgstr ""
+"ÌD öf thé Öppïä éxplörätïön tö émßéd Ⱡ'σяєм ιρѕυм ∂σłσя ѕιт αмєт, "
+"¢σηѕє¢тєтυ#"
+
+#: oppia/oppia.py
+msgid "Source URL of the site"
+msgstr "Söürçé ÛRL öf thé sïté Ⱡ'σяєм ιρѕυм ∂σłσя ѕιт αмєт, ¢#"
+
+#: oppia/templates/oppia_edit.html
+msgid "Component Display Name"
+msgstr "Çömpönént Dïspläý Nämé Ⱡ'σяєм ιρѕυм ∂σłσя ѕιт αмєт, ¢#"
+
+#: oppia/templates/oppia_edit.html
+msgid ""
+"The name students see. This name appears in the course ribbon and as a "
+"header for the Oppia exploration."
+msgstr ""
+"Thé nämé stüdénts séé. Thïs nämé äppéärs ïn thé çöürsé rïßßön änd äs ä "
+"héädér för thé Öppïä éxplörätïön. Ⱡ'σяєм ιρѕυм ∂σłσя ѕιт α#"
+
+#: oppia/templates/oppia_edit.html
+msgid "Oppia Exploration ID"
+msgstr "Öppïä Éxplörätïön ÌD Ⱡ'σяєм ιρѕυм ∂σłσя ѕιт αмєт, #"
+
+#: oppia/templates/oppia_edit.html
+#, python-format
+msgid "Example: %(example)s"
+msgstr "Éxämplé: %(example)s Ⱡ'σяєм ιρѕυм ∂σłσя ѕ#"
+
+#: oppia/templates/oppia_edit.html
+msgid "Oppia Server URL"
+msgstr "Öppïä Sérvér ÛRL Ⱡ'σяєм ιρѕυм ∂σłσя ѕιт αм#"
+
+#: oppia/templates/oppia_edit.html
+#, python-format
+msgid "Example: %(url)s"
+msgstr "Éxämplé: %(url)s Ⱡ'σяєм ιρѕυм ∂σłσя ѕ#"
+
+#: oppia/templates/oppia_edit.html
+msgid "Save"
+msgstr "Sävé Ⱡ'σяєм ι#"
+
+#: oppia/templates/oppia_edit.html
+msgid "Cancel"
+msgstr "Çänçél Ⱡ'σяєм ιρѕυ#"
+
+#: oppia/templates/oppia_preview.html
+msgid "This XBlock does not have an inline Studio preview."
+msgstr ""
+"Thïs XBlöçk döés nöt hävé än ïnlïné Stüdïö prévïéw. Ⱡ'σяєм ιρѕυм ∂σłσя ѕιт "
+"αмєт, ¢σηѕє¢тєтυя α#"
+
+#: oppia/templates/oppia_preview.html
+#, python-format
+msgid ""
+"It is an embedded version of the Oppia exploration with id '%(oppiaid)s' "
+"located at %(src)s"
+msgstr ""
+"Ìt ïs än émßéddéd vérsïön öf thé Öppïä éxplörätïön wïth ïd '%(oppiaid)s' "
+"löçätéd ät %(src)s Ⱡ'σяєм ιρѕυм ∂σłσя ѕιт αмєт, ¢σηѕє¢тєт#"

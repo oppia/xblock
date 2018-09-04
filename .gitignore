@@ -1,2 +1,5 @@
 *.pyc
 oppia_xblock.egg-info/*
+
+# Translation files
+*.pot
