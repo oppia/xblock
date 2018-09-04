@@ -1,0 +1,61 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: Oppia Django\n"
+"Language: es\n"
+
+#: oppia/oppia.py:39
+msgid "Display name of the component"
+msgstr ""
+
+#: oppia/oppia.py:43
+msgid "ID of the Oppia exploration to embed"
+msgstr ""
+
+#: oppia/oppia.py:47
+msgid "Source URL of the site"
+msgstr ""
+
+#: oppia/templates/oppia_edit.html:6
+msgid "Component Display Name"
+msgstr ""
+
+#: oppia/templates/oppia_edit.html:9
+msgid "The name students see. This name appears in the course ribbon and as a header for the Oppia exploration."
+msgstr ""
+
+#: oppia/templates/oppia_edit.html:13
+msgid "Oppia Exploration ID"
+msgstr ""
+
+#: oppia/templates/oppia_edit.html:20
+msgid "Oppia Server URL"
+msgstr ""
+
+#: oppia/templates/oppia_edit.html:29
+msgid "Save"
+msgstr ""
+
+#: oppia/templates/oppia_edit.html:32
+msgid "Cancel"
+msgstr ""
+
+#: oppia/templates/oppia_preview.html:4
+msgid "This XBlock does not have an inline Studio preview."
+msgstr ""
+
+#: oppia/templates/oppia_edit.html:16
+msgid "Example: %(example)s"
+msgstr ""
+
+#: oppia/templates/oppia_edit.html:23
+msgid "Example: %(url)s"
+msgstr ""
+
+#: oppia/templates/oppia_preview.html:8
+msgid "It is an embedded version of the Oppia exploration with id '%(oppiaid)s' located at %(src)s"
+msgstr ""
+

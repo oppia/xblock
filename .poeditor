@@ -1,0 +1,20 @@
+; Note: Keep in sync with `config.yaml`
+
+
+[project.oppia]
+; Project page: https://poeditor.com/projects/view?id=204051
+project_id = 204051
+type = po
+terms = oppia/translations/en/LC_MESSAGES/text.po
+trans.ar = oppia/translations/en/LC_MESSAGES/text.po
+trans.ja = oppia/translations/ja_JP/LC_MESSAGES/text.po
+trans.es = oppia/translations/es_ES/LC_MESSAGES/text.po
+
+[project.oppiajs]
+; Project page: https://poeditor.com/projects/view?id=204055
+project_id = 204055
+type = po
+terms = oppia/translations/en/LC_MESSAGES/textjs.po
+trans.ar = oppia/translations/ar/LC_MESSAGES/textjs.po
+trans.ja = oppia/translations/ja_JP/LC_MESSAGES/textjs.po
+trans.es = oppia/translations/es_ES/LC_MESSAGES/textjs.po
