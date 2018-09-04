@@ -19,7 +19,7 @@ For information about working with translations, see the [Internationalization S
 Prepare your environment:
 
 ```
-$ mkvirtualenv poll-xblocks
+$ mkvirtualenv oppia-xblock
 $ make requirements
 ```
 
