@@ -1,0 +1,11 @@
+{% load i18n %}
+<div style="opacity: 0.7;">
+  <p>
+      {% trans "This XBlock does not have an inline Studio preview." %}
+  </p>
+  <p>
+      {# TODO: Add `strong` around the variables #}
+      {% blocktrans %}It is an embedded version of the Oppia exploration with id '{{ oppiaid }}' located at {{ src }}{% endblocktrans %}
+    )}
+  </p>
+</div>

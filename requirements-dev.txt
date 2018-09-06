@@ -1,0 +1,8 @@
+# Internationalization and Localization requirements
+-e git://github.com/edx/xblock-utils.git#egg=xblock-utils
+Django==1.11
+django-statici18n==1.8.2
+Babel==1.3
+# TODO: Revert back to `poeditor-client==0.0.5`, once it's published on PyPI
+git+https://github.com/lukin0110/poeditor-client@v0.0.5#egg=poeditor-client==0.0.5
+edx-i18n-tools==0.4.5

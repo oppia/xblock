@@ -20,7 +20,7 @@
  */
 
 
-(function(window, document) {
+(function(window, document, gettext) {
   // Prevent duplicate loads of this embedding script.
   if (window.hasOwnProperty('OPPIA_EMBED_GLOBALS')) {
     return;
@@ -110,12 +110,10 @@
 
       if (!this.oppiaNode.getAttribute('oppia-id')) {
         var strongTag = document.createElement('strong');
-        strongTag.textContent = 'Warning: ';
+        strongTag.textContent = gettext('Warning: ');
 
         var spanTag = document.createElement('span');
-        spanTag.textContent = (
-          'This Oppia exploration could not be loaded because no ' +
-          'oppia-id attribute was specified in the HTML tag.');
+        spanTag.textContent = gettext('This Oppia exploration could not be loaded because no oppia-id attribute was specified in the HTML tag.');
 
         var div = document.createElement('div');
         div.appendChild(strongTag);
@@ -130,7 +128,7 @@
       if (autoload && autoload === 'false') {
         // Do not load the exploration automatically.
         var button = document.createElement('button');
-        button.textContent = 'Load Exploration';
+        button.textContent = gettext('Load Exploration');
         button.onclick = function() {
           that.init();
         };
@@ -202,7 +200,7 @@
         // Hide the iframe first so that autofocus will not scroll the page.
         style: 'margin: 10px; position: fixed; top: -9999px; visibility: hidden;',
         // NEW: ADDED FOR OpenEdX.
-        title: 'Oppia Exploration'
+        title: gettext('Oppia Exploration')
       };
       for (var key in iframeAttrs) {
         this.iframe.setAttribute(key, iframeAttrs[key]);
@@ -213,7 +211,7 @@
       // Create a div with a loading message.
       var loadingMessageSpan = document.createElement('span');
       loadingMessageSpan.style.fontSize = 'larger';
-      loadingMessageSpan.textContent = 'Loading...';
+      loadingMessageSpan.textContent = gettext('Loading...');
 
       var loadingMessageContainer = document.createElement('div');
       loadingMessageContainer.setAttribute('style', warningBoxStyle);
@@ -233,10 +231,10 @@
           var loadingMessageContainer = that.loadingDiv.firstChild;
           var loadingMessage = loadingMessageContainer.firstChild;
 
-          loadingMessage.textContent = 'This exploration could not be loaded.';
+          loadingMessage.textContent = gettext('This exploration could not be loaded.');
 
           var loadingMessageSubtitle = document.createElement('div');
-          loadingMessageSubtitle.textContent = 'Sorry about that.';
+          loadingMessageSubtitle.textContent = gettext('Sorry about that.');
 
           loadingMessageContainer.setAttribute('style', warningBoxStyle);
           loadingMessageContainer.appendChild(document.createElement('br'));
@@ -390,7 +388,7 @@
         iframeNode, explorationVersion);
     }
   };
-}(window, document));
+}(window, document, OppiaXBlockI18N.gettext));
 
 
 // FIXME: The contents of all functions below this line can be overwritten.

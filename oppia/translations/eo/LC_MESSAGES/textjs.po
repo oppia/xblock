@@ -1,0 +1,52 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-09-02 20:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: eo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: oppia/static/lib/oppia-player-0.0.1-modified.js
+msgid "Warning: "
+msgstr "Wärnïng:  Ⱡ'σяєм ιρѕυм ∂σł#"
+
+#: oppia/static/lib/oppia-player-0.0.1-modified.js
+msgid ""
+"This Oppia exploration could not be loaded because no oppia-id attribute was"
+" specified in the HTML tag."
+msgstr ""
+"Thïs Öppïä éxplörätïön çöüld nöt ßé löädéd ßéçäüsé nö öppïä-ïd ättrïßüté wäs"
+" spéçïfïéd ïn thé HTML täg. Ⱡ'σяєм ιρѕυм ∂σłσя ѕιт αм#"
+
+#: oppia/static/lib/oppia-player-0.0.1-modified.js
+msgid "Load Exploration"
+msgstr "Löäd Éxplörätïön Ⱡ'σяєм ιρѕυм ∂σłσя ѕιт αм#"
+
+#: oppia/static/lib/oppia-player-0.0.1-modified.js
+msgid "Oppia Exploration"
+msgstr "Öppïä Éxplörätïön Ⱡ'σяєм ιρѕυм ∂σłσя ѕιт αмє#"
+
+#: oppia/static/lib/oppia-player-0.0.1-modified.js
+msgid "Loading..."
+msgstr "Löädïng... Ⱡ'σяєм ιρѕυм ∂σłσ#"
+
+#: oppia/static/lib/oppia-player-0.0.1-modified.js
+msgid "This exploration could not be loaded."
+msgstr ""
+"Thïs éxplörätïön çöüld nöt ßé löädéd. Ⱡ'σяєм ιρѕυм ∂σłσя ѕιт αмєт, "
+"¢σηѕє¢тєтυ#"
+
+#: oppia/static/lib/oppia-player-0.0.1-modified.js
+msgid "Sorry about that."
+msgstr "Sörrý äßöüt thät. Ⱡ'σяєм ιρѕυм ∂σłσя ѕιт αмє#"

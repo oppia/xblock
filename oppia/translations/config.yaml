@@ -1,0 +1,13 @@
+# Configuration for i18n workflow.
+
+# Note: Keep in sync with `.poeditor`
+locales:
+    - en  # English - Source Language
+    - eo  # Esperanto
+    - ar  # Arabic
+    - es_ES  # Spanish (Spain)
+    - ja_JP  # Japanese
+
+# The locales used for fake-accented English, for testing.
+dummy_locales:
+    - eo
