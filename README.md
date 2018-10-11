@@ -9,3 +9,4 @@ Notes:
 1. You will need to add the value "oppia" to the `advanced_modules` field in Studio's 'Advanced Settings' menu.
 2. On devstack, the XBlock does not show up in Studio as a live preview in the editor. However, it does show up in the LMS.
 3. This XBlock also comes with default logging capabilities that make use of edX's `event-tracking` library (documented [here](http://edx.readthedocs.org/projects/edx-developer-guide/en/latest/analytics.html#event-tracking)).
+4. This XBlock does not support translations out-of-the-box. For an example of how translations could be implemented, please see [this fork](https://github.com/appsembler/oppia-xblock).
