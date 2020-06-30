@@ -16,11 +16,13 @@
 
 """This XBlock embeds an instance of Oppia in the OpenEdX platform."""
 
+from __future__ import absolute_import
 import pkg_resources
 
 from xblock.core import XBlock
 from xblock.fields import Scope, String
 from xblock.fragment import Fragment
+import six
 
 
 class OppiaXBlock(XBlock):
@@ -111,12 +113,12 @@ class OppiaXBlock(XBlock):
         html_str = pkg_resources.resource_string(
             __name__, "static/html/oppia_edit.html")
         oppiaid = self.oppiaid or ''
-        frag = Fragment(unicode(html_str).format(
+        frag = Fragment(six.text_type(html_str).format(
             oppiaid=oppiaid, src=self.src, display_name=self.display_name))
 
         js_str = pkg_resources.resource_string(
             __name__, "static/js/oppia_edit.js")
-        frag.add_javascript(unicode(js_str))
+        frag.add_javascript(six.text_type(js_str))
         frag.initialize_js('OppiaXBlockEditor')
 
         return frag
